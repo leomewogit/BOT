@@ -313,16 +313,16 @@ fcm=$(grep -w ${message_chat_id[$id]} $User_Token | awk '{print $NF}')
 }
 
 local msg
-msg="===========================\n"
+msg="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
 msg+="Welcome <b>${message_from_first_name[$id]}</b>\n\n"
 msg+="To access the menu [ /menu ]\n"
 msg+="To see server information [ /info ]\n"
 msg+="for free account [ /free ]\n\n"
-msg+="===========================\n"
+msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
 [[ "${message_from_id[$id]}" != "$Admin_ID" ]] && {
 msg+="<b>Acces Token:</b>\n"
 msg+="<code>$fcm</code>\n"
-msg+="===========================\n"
+msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
 } 
 ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
      --text "$(echo -e $msg)" \
@@ -357,9 +357,9 @@ hargapptp=$(grep -w "Price PPTP" /etc/.maAsiss/price | awk '{print $NF}')
     if [[ "$(grep -w "${message_from_id}" $User_Active | grep -wc 'reseller')" != '0' ]]; then
         _SaldoTotal=$(grep -w 'Saldo_Reseller' /etc/.maAsiss/db_reseller/${message_from_id}/${message_from_id} | awk '{print $NF}')
         local env_msg
-        env_msg="━━━━━━━━━━━━━━━━━━━━━\n"
+        env_msg="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         env_msg+="<b> WELCOME TO BOT $nameStore</b>\n"
-        env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
+        env_msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         env_msg+="💲Price List :💲\n"
         env_msg+="<code>SSH            : $hargassh\n"
         env_msg+="VMess          : $hargavmess\n"
@@ -372,12 +372,12 @@ hargapptp=$(grep -w "Price PPTP" /etc/.maAsiss/price | awk '{print $NF}')
         env_msg+="SSTP           : $hargasstp\n"
         env_msg+="PPTP           : $hargapptp\n"
         env_msg+="L2TP           : $hargal2tp</code>\n"
-        env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
+        env_msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         env_msg+="🤵 Admin Panel : $admin_bot_panel 🤵\n"
         env_msg+="💡 Limit Trial : $_limTotal users 💡\n"
         env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
-        env_msg+="💰 Current Saldo : $_SaldoTotal 💰\n"
-        env_msg+="━━━━━━━━━━━━━━━━━━━━━\n\n"
+        env_msg+="💰 Current Point : $_SaldoTotal 💰\n"
+        env_msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$env_msg" \
             --reply_markup "$menu_re_main_updater1" \
             --parse_mode html
@@ -392,9 +392,9 @@ hargapptp=$(grep -w "Price PPTP" /etc/.maAsiss/price | awk '{print $NF}')
 menu_func_cb() {
     [[ "${callback_query_from_id[$id]}" == "$Admin_ID" ]] && {
         local env_msg
-        env_msg="━━━━━━━━━━━━━━━━━━━━━\n"
+        env_msg="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         env_msg+="<b> WELCOME TO BOT $nameStore</b>\n"
-        env_msg+="━━━━━━━━━━━━━━━━━━━━━\n\n"
+        env_msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
         ShellBot.editMessageText --chat_id ${callback_query_message_chat_id[$id]} \
             --message_id ${callback_query_message_message_id[$id]} \
             --text "$env_msg" \
@@ -407,16 +407,16 @@ menu_func_cb() {
 
 [[ ! -f "/etc/.maAsiss/update-info" ]] && {
    local env_msg
-   env_msg="━━━━━━━━━━━━━━━━━━━━━\n"
+   env_msg="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
    env_msg+="<b> WELCOME TO BOT $nameStore</b>\n"
-   env_msg+="━━━━━━━━━━━━━━━━━━━━━\n\n"
+   env_msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
 } || {
    inf=$(cat /etc/.maAsiss/update-info)
    local env_msg
-   env_msg="━━━━━━━━━━━━━━━━━━━━━\n"
+   env_msg="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
    env_msg+="🏷 Information for reseller :\n\n"
    env_msg+="$inf\n\n"
-   env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
+   env_msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
 }
         ShellBot.editMessageText --chat_id ${callback_query_message_chat_id[$id]} \
             --message_id ${callback_query_message_message_id[$id]} \
@@ -460,7 +460,7 @@ info_port() {
         wsssl=`cat /root/log-install.txt | grep -w "SSH SSL Websocket" | cut -d: -f2 | awk '{print $1}'`
                         
         local env_msg
-        env_msg="━━━━━━━━━━━━━━━━━━━━━\n"
+        env_msg="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         env_msg+="OpenSSH : $portssh\n"
         env_msg+="SSH-WS : $portsshws\n"
         env_msg+="SSH-WS-SSL : $wsssl\n"
@@ -486,7 +486,7 @@ info_port() {
         env_msg+="SS-OBFS TLS : $portsstls\n"
         env_msg+="SS-OBFS HTTP : $portss\n"
         env_msg+="Shadowsocks-R : $portssR\n"
-        env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
+        env_msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         ShellBot.editMessageText --chat_id ${callback_query_message_chat_id[$id]} \
             --message_id ${callback_query_message_message_id[$id]} \
             --text "$env_msg" \
@@ -515,7 +515,7 @@ hargapptp=$(grep -w "Price PPTP" /etc/.maAsiss/price | awk '{print $NF}')
 
 [[ "${callback_query_from_id[$id]}" == "$Admin_ID" ]] || [[ "$(grep -wc ${callback_query_from_id} $User_Active)" != '0' ]] && {
         local env_msg
-        env_msg="━━━━━━━━━━━━━━━━━━━━━\n"
+        env_msg="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         env_msg+="💲Price List :💲\n"
         env_msg+="<code>SSH            : $hargassh\n"
         env_msg+="VMess          : $hargavmess\n"
@@ -528,7 +528,7 @@ hargapptp=$(grep -w "Price PPTP" /etc/.maAsiss/price | awk '{print $NF}')
         env_msg+="SSTP           : $hargasstp\n"
         env_msg+="PPTP           : $hargapptp\n"
         env_msg+="L2TP           : $hargal2tp</code>\n"
-        env_msg+="━━━━━━━━━━━━━━━━━━━━━\n"
+        env_msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
         ShellBot.editMessageText --chat_id ${callback_query_message_chat_id[$id]} \
             --message_id ${callback_query_message_message_id[$id]} \
             --text "$env_msg" \
